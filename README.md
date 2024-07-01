@@ -69,7 +69,59 @@ Abra o arquivo pom.xml e adicione a seguinte dependência para o MySQL Connector
         </dependency>
 </dependencies>
 ```
+
+
+## Antes
+![image](https://github.com/PedroRezende14/Framework-BD/assets/128604858/bcae02b1-6150-4798-b549-9703f2bb0120)
+
     
+## Depois
+![image](https://github.com/PedroRezende14/Framework-BD/assets/128604858/1a52a01a-1aff-425c-8aa0-06df3a27f4cb)
+
 
 Executando o Projeto
 Com o ambiente configurado e as dependências adicionadas, você está pronto para executar o projeto no Eclipse. Certifique-se de que o servidor MySQL local (XAMPP) esteja iniciado e o MySQL Workbench esteja configurado corretamente com as bases de dados necessárias.
+
+## Configurando Xamp e o MySQL:
+
+Abra o Xamp: 
+Execulte Apache e o MySql
+
+## Antes
+![image](https://github.com/PedroRezende14/Framework-BD/assets/128604858/b4e426b7-5bce-4e9f-9ffb-7e7b4bfd6762)
+
+
+## Depois
+
+
+![image](https://github.com/PedroRezende14/Framework-BD/assets/128604858/bdc5da82-0105-4543-b3a4-1bf0cf990883)
+
+
+Abra o MySql
+Crie uma nova Connections
+
+![image](https://github.com/PedroRezende14/Framework-BD/assets/128604858/d3289fb3-6b64-4009-a9e3-a84bea87650d)
+
+![image](https://github.com/PedroRezende14/Framework-BD/assets/128604858/d538efe5-5490-4a97-a6d6-c61f5dc8590d)
+
+# Como criar meu primeiro banco de dados:
+
+Dentro do Package criado anteriomente crie uma class 
+new -> class -> de um nome e finish
+
+fala os seguintes import 
+```java
+import DTO.*;
+import Metodos.*;
+```
+
+```java
+public class Main {
+	public static void main(String[] args) {
+	      BancoMetodos bancoMetodos = new BancoMetodos();   	
+	}
+}
+```
+
+
+
