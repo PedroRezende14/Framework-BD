@@ -5,6 +5,7 @@ Para executar este projeto, siga as instruções abaixo para configurar seu ambi
 
 # Pré-requisitos
 faça download  libBD2.0.jar:
+https://drive.google.com/drive/folders/1rGwn8w93PcQ2z6XnLbiW75pz4J8uDTBC?usp=sharing
 
 Certifique-se de ter instalado os seguintes softwares:
 
