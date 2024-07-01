@@ -110,18 +110,64 @@ Dentro do Package criado anteriomente crie uma class
 new -> class -> de um nome e finish
 
 fala os seguintes import 
-```java
-import DTO.*;
-import Metodos.*;
-```
+
+
+
+
+
+### Criando Banco
 
 ```java
+
+import DTO.*;
+import Metodos.*;
+
 public class Main {
 	public static void main(String[] args) {
-	      BancoMetodos bancoMetodos = new BancoMetodos();   	
+
+//		CONFIGURAÇÕES PRE SETADAS, NA CONEXAO, MAS PARA MUDAR APENAS USER O COMANDO ABAIXO
+	//        Conexao.setNameBanco("");  // NOME DO BANCO É SETADO APARTIR DO MOMENTO QUE VC CRIA UM BANCO DE DADOS
+	//        Conexao.setHost("localhost"); 
+	//        Conexao.setPorta(3306);
+	//        Conexao.setUser("root");
+	//        Conexao.setPassword("");
+
+
+	       BancoMetodos bancoMetodos = new BancoMetodos(); // -> Chamando o metodo do banco
+               bancoMetodos.criarBanco("escola", Charsets.UTF8, Collations.UTF8_GENERAL_CI); //-> para criar um banco chame o ".criarBanco("NOME_DO_BANCO", Charsets.DESEJADO, Collations.DESEJADO );"
+```
+
+### Criando Tabela
+```java
+		Tabela pai = new Tabela("pai");  // -> criando uma tabela
+  		Coluna Nome = new Coluna("nome", Tipo.VARCHAR, 100, false, true, false, false, false, false); // -> criando uma coluna
+
+		pai.add(new Coluna("id", Tipo.INT, 11, true, true, false, false, true, false)); // outra maneira de adcionar uma coluna
+ 		pai.add(Nome); -> adicionando a coluna "nome" na tabela "pai"
+	
+```
+
+### Inserindo Tabela no banco de dados  
+
+```java
+
+		TabelaMetodos metodosTabela = new TabelaMetodos(); Chamando o metodo de Tabela
+		metodosTabela.insertTabela(pai);
+		
 	}
 }
+
 ```
+
+# exemplo de codigo disponivel:
+
+https://github.com/PedroRezende14/Framework-BD/blob/main/src/Main/CriaBanco.java
+
+# como usar o crud da biblioteca:
+https://github.com/PedroRezende14/Framework-BD/blob/main/src/Main/MainCrud.java
+
+
+
 
 
 
