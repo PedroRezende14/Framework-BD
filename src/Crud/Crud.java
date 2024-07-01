@@ -44,7 +44,7 @@ public class Crud {
                 stmt.setString(i + 1, valoresArray[i]);
             }
             stmt.executeUpdate();
-            System.out.println("Dados adicionados com sucesso.");
+            System.out.println("Dados adicionados com sucesso");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -88,7 +88,7 @@ public class Crud {
             stmt.setString(1, id); 
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("Dados excluídos com sucesso.");
+                System.out.println("Dados excluidos com sucesso.");
             } else {
                 System.out.println("ID nao encotrado.");
             }
@@ -103,7 +103,7 @@ public class Crud {
         String[] valoresArray = salvarEmArray(novosValores);
 
         if (colunasArray.length != valoresArray.length) {
-            throw new IllegalArgumentException("O número de colunas deve corresponder ao número de valores.");
+            throw new IllegalArgumentException("O numero de colunas deve corresponder ao numero de valores.");
         }
 
         StringBuilder sql = new StringBuilder("UPDATE " + nomeTabela + " SET ");
@@ -128,7 +128,7 @@ public class Crud {
             if (rowsAffected > 0) {
                 System.out.println("Dados atualizados com sucesso.");
             } else {
-                System.out.println("Nenhuma linha encontrada para atualização.");
+                System.out.println("Nenhuma linha encontrada para atualizacao.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -160,5 +160,6 @@ public class Crud {
         }
         return resultado;
     }
+    
     
 }

@@ -4,7 +4,7 @@ import DTO.*;
 
 public interface BancoInterface {
 	 void criarBanco(String nome, Charsets charset, Collations collation);
-	 String listarCharsets();
-	 String listarCollations(String charset);
+	 void listarCharsets();
+	 void listarCollations();
 	 void dropBanco(String nome);
 }

@@ -4,11 +4,6 @@ public class Banco {
 	protected String nome;
 	protected String collation;
 	protected String charset;
-	protected static String nameBanco;
-	protected static String user = "root";
-	protected static String password="";
-	protected static String host="localhost";
-	protected static int porta=3306;
 	
 	public String getNome() {
 		return nome;

@@ -8,5 +8,4 @@ public enum Tipo {
 	DATE,
 	FLOAT, 
 	CHAR,;
-
 }

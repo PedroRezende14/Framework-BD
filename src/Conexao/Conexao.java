@@ -6,7 +6,13 @@ import java.sql.Statement;
 
 import DTO.*;
 
-public class Conexao extends Banco {
+public class Conexao{
+	
+	protected static String nameBanco;
+	protected static String user = "root";
+	protected static String password="";
+	protected static String host="localhost";
+	protected static int porta=3306;
 
     public static Connection conectar() {
         Connection conexao = null;

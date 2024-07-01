@@ -27,49 +27,16 @@ public class BancoMetodos implements BancoInterface{
 			}
 		}
 		
-		public String listarCharsets() {
-	        try {
-	        	Connection conexao = Conexao.genericConnection();
-	            Statement stmt = conexao.createStatement();
-	            String sql = "SHOW CHARACTER SET";
-	            ResultSet rs = stmt.executeQuery(sql);
-
-	            System.out.println("Lista de charsets disponíveis:");
-	            while (rs.next()) {
-	                String charset = rs.getString("Charset");
-	                String description = rs.getString("Description");
-	                System.out.println(charset + ": " + description);
-	            }
-	            rs.close();
-	            stmt.close();
-	            conexao.close();
-	        } catch (SQLException e) {
-	            e.printStackTrace();
+		public void listarCharsets() {
+			for (Charsets charset : Charsets.values()) {
+	            System.out.println(charset.name() + ": " + charset.getCharsetName());
 	        }
-			return null;
 	    }
 		
-		 public String listarCollations(String charset) {
-			 
-		        try { Connection conexao = Conexao.genericConnection();
-		            Statement stmt = conexao.createStatement();
-		            String sql = "SHOW COLLATION WHERE Charset = '" + charset + "'";
-		            ResultSet rs = stmt.executeQuery(sql);
-
-		            System.out.println("Lista de collations para o charset " + charset + ":");
-		            while (rs.next()) {
-		                String collation = rs.getString("Collation");
-		                String isDefault = rs.getString("Default");
-		                System.out.println(collation + (isDefault.equals("Yes") ? " (default)" : ""));
-		            }                                                                                    
-
-		            rs.close();
-		            stmt.close();
-		            conexao.close();
-		        } catch (SQLException e) {
-		            e.printStackTrace();
+		 public void listarCollations() {
+			  for (Collations collation : Collations.values()) {
+		            System.out.println(collation.name() + ": " + collation.getCollationName());
 		        }
-				return charset;
 		    }	
 		 
 		 public void dropBanco(String nomeBanco) {
