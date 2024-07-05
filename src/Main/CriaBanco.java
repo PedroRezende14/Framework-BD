@@ -5,20 +5,14 @@ import Metodos.*;
 
 public class CriaBanco {
     public static void main(String[] args) {
-
-//        Conexao.setNameBanco("Teste");
-//        Conexao.setHost("localhost");
-//        Conexao.setPorta(3306);
-//        Conexao.setUser("root");
-//        Conexao.setPassword("");
-
+        BancoMetodos bancoMetodos = new BancoMetodos(); 
         TabelaMetodos metodosTabela = new TabelaMetodos();
-        BancoMetodos bancoMetodos = new BancoMetodos();
+        
+        bancoMetodos.dropBanco("fml");
+        bancoMetodos.criarBanco("fml", Charsets.UTF8, Collations.UTF8_GENERAL_CI);
 
-        bancoMetodos.criarBanco("escola", Charsets.UTF8, Collations.UTF8_GENERAL_CI);
-
-      
         Tabela pai = new Tabela("pai");
+        Tabela mae = new Tabela("mae");
         Tabela filho = new Tabela("filho");
 
         Coluna Nome = new Coluna("nome", Tipo.VARCHAR, 100, false, true, false, false, false, false);
@@ -27,24 +21,29 @@ public class CriaBanco {
         pai.add(new Coluna("id", Tipo.INT, 11, true, true, false, false, true, false));
         pai.add(Nome);
         pai.add(Idade);
+        
+        mae.add(new Coluna("id", Tipo.INT, 11, true, true, false, false, true, false));
+        mae.add(Nome);
 
-        filho.add(new Coluna("idFilho", Tipo.INT, 11, true, true, false, false, true, false));
+        filho.add(new Coluna("id", Tipo.INT, 11, true, true, false, false, true, false));
+        filho.add(new Coluna("idPai", Tipo.INT, 11, false, true, false, false, false, false));
         filho.add(Nome);
         filho.add(Idade);
 
-        metodosTabela.insertTabela(filho);
         metodosTabela.insertTabela(pai);
+        metodosTabela.insertTabela(mae);
+        metodosTabela.insertTabela(filho);
 
-        Relacionamento relacionamento = new Relacionamento("idFilho", "pai", "id", "CASCADE", "CASCADE");
-        metodosTabela.adicionarRelacionamento("filho", relacionamento);
+        Relacionamento relacionamentoPai = new Relacionamento("idPai", "pai", "id", "CASCADE", "CASCADE");
+        metodosTabela.adicionarRelacionamento("filho", relacionamentoPai);
+                
+        Tabela associa = new Tabela("Associa");
+        associa.add(new Coluna("idPai", Tipo.INT, 11, false, true, false, false, false, false));
+        associa.add(new Coluna("idMae", Tipo.INT, 11, false, true, false, false, false, false));
+        associa.add(new Coluna("idAssocia", Tipo.INT, 11, true, true, false, false, true, false));
+        metodosTabela.insertTabela(associa);
+        metodosTabela.adicionarRelacionamento("Associa", new Relacionamento("idPai", "pai", "id", "CASCADE", "CASCADE"));
+        metodosTabela.adicionarRelacionamento("Associa", new Relacionamento("idMae", "mae", "id", "CASCADE", "CASCADE"));
 
-//   	Outras operaçoes possiveis
-        
-//      metodosTabela.inserirColuna("pai", new Coluna("sobrenome", Tipo.VARCHAR, 50, false, true, false, false, false, false));
-//      metodosTabela.dropTabela("pai");
-//      metodosTabela.addPK("NomeTabela", "NomeColuna");
-//      metodosTabela.dropPK("nomeTabela");
-//      metodosTabela.removerChaveEstrangeira("NomeTabela", "NomeDaChave");
-//      metodosTabela.dropColuna("NomeTabela", "NomeColuna");
     }
 }
